@@ -30,12 +30,16 @@ module JsRoutes
     end
 
     def definitions(**opts)
-      generate(module_type: 'DTS', **opts)
+      generate(module_type: default_module_type, **opts)
     end
 
     def definitions!(file_name = nil, **opts)
       file_name ||= configuration.file&.sub(%r{(\.d)?\.(j|t)s\Z}, ".d.ts")
-      generate!(file_name, module_type: 'DTS', **opts)
+      generate!(file_name, module_type: default_module_type, **opts)
+    end
+
+    def default_module_type
+      'DTS' if configuration.module_type
     end
 
     def json(string)

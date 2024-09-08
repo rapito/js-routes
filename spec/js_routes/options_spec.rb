@@ -466,7 +466,11 @@ describe JsRoutes, "options" do
 
     context "with url_links option" do
       around(:each) do |example|
-        ActiveSupport::Deprecation.silence do
+        if ActiveSupport::Deprecation.respond_to?(:silence)
+          ActiveSupport::Deprecation.silence do
+            example.run
+          end
+        else
           example.run
         end
       end
