@@ -39,7 +39,7 @@ module JsRoutes
     end
 
     def default_module_type
-      'DTS' if configuration.module_type && configuration.module_type != 'NIL'
+      'DTS'
     end
 
     def json(string)

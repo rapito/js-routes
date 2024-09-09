@@ -28,7 +28,7 @@ module JsRoutes
 
     def regenerate
       JsRoutes.generate!
-      JsRoutes.definitions!
+      JsRoutes.definitions! if JsRoutes.configuration.modern?
     end
 
     def routes_mtime

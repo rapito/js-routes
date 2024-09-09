@@ -13,7 +13,7 @@ class JsRoutes::Generators::Middleware < JsRoutes::Generators::Base
       inject_into_file path, pack_content
     end
     JsRoutes.generate!
-    JsRoutes.definitions!
+    JsRoutes.definitions! if JsRoutes.configuration.modern?
   end
 
   protected
